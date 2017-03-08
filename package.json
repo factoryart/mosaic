@@ -1,0 +1,42 @@
+{
+  "name": "mosaic",
+  "version": "0.1.0",
+  "description": "Asynchronous photo-grids with animation effects.",
+  "keywords": [
+    "mosaic",
+    "photo grid",
+    "photo collage",
+    "animated grid",
+    "asynchronous grid"
+  ],
+  "homepage": "https://github.com/factoryart/mosaic",
+  "main": "./dist/mosaic.js",
+  "maintainers": [
+    {
+      "name": "Martin Caetano",
+      "email": "pelcasandra@me.com",
+      "web": "http://www.martincaetano.com"
+    }
+  ],
+  "bugs": {
+    "email": "pelcasandra@me.com",
+    "url": "https://github.com/factoryart/mosaic/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/factoryart/mosaci.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-uglify": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}

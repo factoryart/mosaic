@@ -1,0 +1,28 @@
+{
+  "name": "mosaic",
+  "description": "Asynchronous photo-grids with animation effects.",
+  "main": "./dist/mosaic.js",
+  "authors": [
+    "Martin Caetano <pelcasandra@me.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "mosaic",
+    "photo",
+    "grid",
+    "photo",
+    "collage",
+    "animated",
+    "grid",
+    "asynchronous",
+    "grid"
+  ],
+  "homepage": "https://github.com/factoryart/mosaic",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
