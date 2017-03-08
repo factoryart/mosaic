@@ -50,6 +50,17 @@ Since you are using jQuery you can also configure it like this.
 ​$("#mosaicContainer").mosaic();
 ```
 
+Mosaic.js positions photos as backgrounds to make sure they will look who and you can use new CSS grid layouts. Make sure to include the following CSS and adjust width and height dimensions of your items as needed. 
+
+```css
+.item {
+  background-size: cover;
+  background-position: center;
+  width: 150px;
+  height: 150px;
+}
+```
+
 ## Configuration
 
 #### url
