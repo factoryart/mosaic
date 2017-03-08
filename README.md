@@ -1,5 +1,7 @@
 Mosaic.js is a simple library to display asynchronous photo-grids with animation effects.
 
+<img src="https://github.com/factoryart/mosaic/raw/master/demo/example.gif" width="640">
+
 ## Requirements
 
 + You need jQuery installed.
