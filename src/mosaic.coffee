@@ -8,6 +8,7 @@ class Mosaic
     out: 'fadeOut'
     replace: 1
     url: '/photos.json'
+    pixel: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 
   extend = (target, objects...) ->
     for object in objects
@@ -38,7 +39,7 @@ class Mosaic
     @photos = []
 
   items: ->
-    $(@element).find(this.options.items)
+    $(@element).find(@options.items)
 
   active_items: ->
     @items().filter('.active')
@@ -68,30 +69,40 @@ class Mosaic
 
   clear: (count = @active_items().length) ->
     elements = @shuffle(@active_items()).slice(@active_items().length - count)
-
-    elements.addClass(this.options.out)
+    elements.find('img').remove()
+    elements.addClass(@options.out)
     elements.removeClass('active')
     elements.removeAttr('style')
 
   draw: (count = @simultaneous_photos_count() ) ->       
     @clear(count)
     @shuffle(@non_active_items()).slice(@non_active_items().length - count).each (index, element) =>
-      $(element).removeClass(this.defaultOptions.out)
-      $(element).addClass('animated active').addClass(this.options.in)      
+      $(element).removeClass(@options.out)
+      $(element).addClass('animated active').addClass(@options.in)      
       $(element).css('background-image', "url(#{@photos[0].asset})" )
-      $(element).find('img').attr('title',@photos[0].title)
-      $(element).find('img').attr('alt',@photos[0].title)
+      
+      if @photos[0].title.length > 0              
+        @draw_inside(element, @photos[0])
       @push_photo()
+  
+  draw_inside: (item, photo) ->
+    element = document.createElement "img"
+    element.setAttribute('width','100%')
+    element.setAttribute('height','100%')
+    element.src = @options.pixel
+    element.title = @photos[0].title
+    element.alt = @photos[0].title
+    item.appendChild(element)
 
   startDrawing: ->  
     @draw()
     setInterval (=>
-      @draw this.options.replace
+      @draw @options.replace
       return
-    ), this.options.interval
+    ), @options.interval
 
   retrieve: ->
-    $.getJSON(this.options.url).done((data) =>              
+    $.getJSON(@options.url).done((data) =>              
       $.each @shuffle(data), (key, val) =>
         @addPhoto val
       @startDrawing()
