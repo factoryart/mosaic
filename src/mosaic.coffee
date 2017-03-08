@@ -4,8 +4,8 @@ class Mosaic
     density: 5  # Values from 1-10
     interval: 5000
     items: '.item'
-    effect_in: 'fadeIn'
-    effect_out: 'fadeOut'
+    in: 'fadeIn'
+    out: 'fadeOut'
     replace: 1
     url: '/photos.json'
 
@@ -69,15 +69,15 @@ class Mosaic
   clear: (count = @active_items().length) ->
     elements = @shuffle(@active_items()).slice(@active_items().length - count)
 
-    elements.addClass(this.options.effect_out)
+    elements.addClass(this.options.out)
     elements.removeClass('active')
     elements.removeAttr('style')
 
   draw: (count = @simultaneous_photos_count() ) ->       
     @clear(count)
     @shuffle(@non_active_items()).slice(@non_active_items().length - count).each (index, element) =>
-      $(element).removeClass(this.defaultOptions.effect_out)
-      $(element).addClass('animated active').addClass(this.options.effect_in)      
+      $(element).removeClass(this.defaultOptions.out)
+      $(element).addClass('animated active').addClass(this.options.in)      
       $(element).css('background-image', "url(#{@photos[0].asset})" )
       $(element).find('img').attr('title',@photos[0].title)
       $(element).find('img').attr('alt',@photos[0].title)

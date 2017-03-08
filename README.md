@@ -1,6 +1,6 @@
-Mosaic.js is a simple library to display asynchronous photo-grids with animation effects.
-
 <img src="https://github.com/factoryart/mosaic/raw/master/demo/example.gif" width="640">
+
+Mosaic.js is a simple library to display asynchronous photo-grids with animation effects.
 
 ## Requirements
 
@@ -9,7 +9,7 @@ Mosaic.js is a simple library to display asynchronous photo-grids with animation
 
 ## Getting Started
 
-By default Mosaic looks for child elements with the class name _.item_. You can change this class name by passing a different value to _items_ (see Configuration below). 
+By default Mosaic looks for child elements with the class name `.item`. You can change this class name by passing a different value to _items_ (see Configuration below). 
 
 Your minimal markup should look something like this.
 
@@ -21,7 +21,7 @@ Your minimal markup should look something like this.
 </div>
 ```
 
-You need to provide a URL with a JSON file including the list of photos. Only _asset_ attribute is required. 
+You need to provide a URL with a JSON file including the list of photos. Only `asset` attribute is required. 
 You can also add as many additional attributes as needed.
 
 ```json
@@ -68,11 +68,11 @@ Time between photo changes in milliseconds. Defaults to `5000`.
 
 Class name of child elements. Default is `.item`.
 
-#### effect_in
+#### in
 
 Class name added when item is displayed. Default is `fadeIn`.
 
-#### effect_out
+#### out
 
 Class name added when item is hidden. Default is `fadeOut`.
 

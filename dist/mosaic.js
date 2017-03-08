@@ -9,8 +9,8 @@
       density: 5,
       interval: 5000,
       items: '.item',
-      effect_in: 'fadeIn',
-      effect_out: 'fadeOut',
+      "in": 'fadeIn',
+      out: 'fadeOut',
       replace: 1,
       url: '/photos.json'
     };
@@ -90,7 +90,7 @@
         count = this.active_items().length;
       }
       elements = this.shuffle(this.active_items()).slice(this.active_items().length - count);
-      elements.addClass(this.options.effect_out);
+      elements.addClass(this.options.out);
       elements.removeClass('active');
       return elements.removeAttr('style');
     };
@@ -102,8 +102,8 @@
       this.clear(count);
       return this.shuffle(this.non_active_items()).slice(this.non_active_items().length - count).each((function(_this) {
         return function(index, element) {
-          $(element).removeClass(_this.defaultOptions.effect_out);
-          $(element).addClass('animated active').addClass(_this.options.effect_in);
+          $(element).removeClass(_this.defaultOptions.out);
+          $(element).addClass('animated active').addClass(_this.options["in"]);
           $(element).css('background-image', "url(" + _this.photos[0].asset + ")");
           $(element).find('img').attr('title', _this.photos[0].title);
           $(element).find('img').attr('alt', _this.photos[0].title);
