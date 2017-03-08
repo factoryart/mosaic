@@ -12,7 +12,8 @@
       "in": 'fadeIn',
       out: 'fadeOut',
       replace: 1,
-      url: '/photos.json'
+      url: '/photos.json',
+      pixel: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
     };
 
     extend = function() {
@@ -90,6 +91,7 @@
         count = this.active_items().length;
       }
       elements = this.shuffle(this.active_items()).slice(this.active_items().length - count);
+      elements.find('img').remove();
       elements.addClass(this.options.out);
       elements.removeClass('active');
       return elements.removeAttr('style');
@@ -102,14 +104,26 @@
       this.clear(count);
       return this.shuffle(this.non_active_items()).slice(this.non_active_items().length - count).each((function(_this) {
         return function(index, element) {
-          $(element).removeClass(_this.defaultOptions.out);
+          $(element).removeClass(_this.options.out);
           $(element).addClass('animated active').addClass(_this.options["in"]);
           $(element).css('background-image', "url(" + _this.photos[0].asset + ")");
-          $(element).find('img').attr('title', _this.photos[0].title);
-          $(element).find('img').attr('alt', _this.photos[0].title);
+          if (_this.photos[0].title.length > 0) {
+            _this.draw_inside(element, _this.photos[0]);
+          }
           return _this.push_photo();
         };
       })(this));
+    };
+
+    Mosaic.prototype.draw_inside = function(item, photo) {
+      var element;
+      element = document.createElement("img");
+      element.setAttribute('width', '100%');
+      element.setAttribute('height', '100%');
+      element.src = this.options.pixel;
+      element.title = this.photos[0].title;
+      element.alt = this.photos[0].title;
+      return item.appendChild(element);
     };
 
     Mosaic.prototype.startDrawing = function() {
